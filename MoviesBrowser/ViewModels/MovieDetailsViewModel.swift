@@ -10,8 +10,8 @@ import Foundation
 struct MovieDetailsViewModel {
     let title: String
     let movieId: String
-    let posterUrl: String
-    let date: Date
+    let posterUrl: URL?
+    let releaseDate: String
     let rating: String
     let overview: String
     var isFavourite: Bool
@@ -19,9 +19,9 @@ struct MovieDetailsViewModel {
     init(movieDetails: MovieDetails, isFavourite: Bool) {
         self.title = movieDetails.title
         self.movieId = movieDetails.movieId
-        self.posterUrl = movieDetails.posterUrl
-        self.date = movieDetails.date
-        self.rating = movieDetails.rating
+        self.posterUrl = URL(string: movieDetails.posterUrl)
+        self.releaseDate = NSLocalizedString("Release date: ", comment: "") + movieDetails.releaseDate.toString()
+        self.rating = NSLocalizedString("Rating: ", comment: "") + movieDetails.rating
         self.overview = movieDetails.overview
         self.isFavourite = isFavourite
     }

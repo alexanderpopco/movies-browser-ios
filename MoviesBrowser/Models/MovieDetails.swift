@@ -11,7 +11,7 @@ struct MovieDetails: Codable {
     let title: String
     let movieId: String
     let posterUrl: String
-    let date: Date
+    let releaseDate: Date
     let rating: String
     let overview: String
 }
