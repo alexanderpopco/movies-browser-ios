@@ -23,6 +23,7 @@
 		74D6B48C2B210914003B328C /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D6B48B2B210914003B328C /* MovieDetails.swift */; };
 		74D6B4902B221223003B328C /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D6B48F2B221223003B328C /* UIImageView+Extensions.swift */; };
 		74D6B4932B221582003B328C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D6B4922B221582003B328C /* Date+Extensions.swift */; };
+		74D6B4952B22726F003B328C /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D6B4942B22726F003B328C /* UIImage+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		74D6B48B2B210914003B328C /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 		74D6B48F2B221223003B328C /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		74D6B4922B221582003B328C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		74D6B4942B22726F003B328C /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			children = (
 				74D6B48F2B221223003B328C /* UIImageView+Extensions.swift */,
 				74D6B4922B221582003B328C /* Date+Extensions.swift */,
+				74D6B4942B22726F003B328C /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				74D6B4832B210624003B328C /* MovieDetailsViewController.swift in Sources */,
 				74D6B4862B2108CF003B328C /* MovieViewModel.swift in Sources */,
 				74D6B4932B221582003B328C /* Date+Extensions.swift in Sources */,
+				74D6B4952B22726F003B328C /* UIImage+Extensions.swift in Sources */,
 				74D6B4902B221223003B328C /* UIImageView+Extensions.swift in Sources */,
 				74D6B48C2B210914003B328C /* MovieDetails.swift in Sources */,
 				74D6B4882B2108F4003B328C /* MovieDetailsViewModel.swift in Sources */,

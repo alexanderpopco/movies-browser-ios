@@ -113,9 +113,16 @@
                             <constraint firstItem="YXt-a4-qee" firstAttribute="top" secondItem="9x1-Nt-AKh" secondAttribute="top" id="XRV-sZ-XTq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YRJ-kS-HdL"/>
+                    <navigationItem key="navigationItem" id="YRJ-kS-HdL">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="StarEmpty" id="9aV-gv-iD5">
+                            <connections>
+                                <action selector="didTapIsFavouriteButton:" destination="PV5-8Z-eHO" id="zqD-kd-wGn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dateOfReleaseLabel" destination="W64-Vj-V3A" id="ncq-xw-B65"/>
+                        <outlet property="isFavouriteButton" destination="9aV-gv-iD5" id="LVP-Bm-hAt"/>
                         <outlet property="overviewLabel" destination="Q04-1n-AN0" id="Qyk-ol-rIM"/>
                         <outlet property="posterImageView" destination="mPc-dh-RRJ" id="FFt-ie-mIX"/>
                         <outlet property="ratingLabel" destination="E4k-3S-wD6" id="A9m-Y1-mRb"/>
@@ -146,6 +153,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="StarEmpty" width="43" height="44"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
