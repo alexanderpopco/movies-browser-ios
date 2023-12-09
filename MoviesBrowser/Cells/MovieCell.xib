@@ -29,8 +29,8 @@
                             <constraint firstAttribute="height" constant="30" id="VbV-Om-DKt"/>
                             <constraint firstAttribute="width" constant="30" id="ufE-BK-27X"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="StarEmpty"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="StarEmpty"/>
                         <connections>
                             <action selector="didTapIsFavouriteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5MT-MJ-MUH"/>
                         </connections>

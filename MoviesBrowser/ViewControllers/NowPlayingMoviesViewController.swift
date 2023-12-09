@@ -37,11 +37,12 @@ class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.reuseIdentifier, for: indexPath) as? MovieCell {
-            cell.configureWithViewModel(viewModel: viewModel.movieCellViewModelAtRow(indexPath.row))
+            let cellViewModel = viewModel.movieCellViewModelAtRow(indexPath.row)
+            cell.configureWithViewModel(viewModel: cellViewModel)
             weak var weakSelf = self
             cell.selectMovieAsFavouriteHandler = { isFavourite in
                 DispatchQueue.main.async {
-                    weakSelf?.setMovieAsFavourite(movieId: weakSelf?.selectedMovieId, isFavourite: isFavourite)
+                    weakSelf?.setMovieAsFavourite(movieId: cellViewModel?.movieId, isFavourite: isFavourite)
                 }
             }
             return cell

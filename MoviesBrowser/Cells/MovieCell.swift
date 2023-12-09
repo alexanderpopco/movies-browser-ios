@@ -20,7 +20,6 @@ class MovieCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         isFavouriteButton.imageView?.contentMode = .scaleAspectFit
-        isFavouriteButton.setTitle(nil, for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,7 +34,8 @@ class MovieCell: UITableViewCell {
     
     private func configureIsFavouriteButton() {
         if let viewModel = viewModel {
-            isFavouriteButton.imageView?.image = viewModel.isFavourite ? UIImage.starFilledImage() : UIImage.starEmptyImage()
+            let buttonImage = viewModel.isFavourite ? UIImage.starFilledImage() : UIImage.starEmptyImage()
+            isFavouriteButton.setImage(buttonImage, for: .normal)
         }
     }
     
