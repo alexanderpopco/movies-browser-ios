@@ -25,4 +25,7 @@ struct NowPlayingViewModel {
         return movieCellViewModels[row].movieId
     }
     
+    func setMovieAsFavourite(movieId: String?) {
+        
+    }
 }

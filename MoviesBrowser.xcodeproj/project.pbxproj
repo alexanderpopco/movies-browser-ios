@@ -25,6 +25,7 @@
 		74D6B4932B221582003B328C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D6B4922B221582003B328C /* Date+Extensions.swift */; };
 		74D6B4952B22726F003B328C /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D6B4942B22726F003B328C /* UIImage+Extensions.swift */; };
 		74D6B4972B23C5C4003B328C /* NowPlayingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D6B4962B23C5C4003B328C /* NowPlayingViewModel.swift */; };
+		74D6B4992B24BBCC003B328C /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D6B4982B24BBCC003B328C /* Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		74D6B4922B221582003B328C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		74D6B4942B22726F003B328C /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		74D6B4962B23C5C4003B328C /* NowPlayingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewModel.swift; sourceTree = "<group>"; };
+		74D6B4982B24BBCC003B328C /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				74D6B4522B2090DC003B328C /* AppDelegate.swift */,
 				74D6B4542B2090DC003B328C /* SceneDelegate.swift */,
+				74D6B49A2B24BBD4003B328C /* Persistence */,
 				74D6B4912B22122B003B328C /* Extensions */,
 				74D6B48D2B21091D003B328C /* Models */,
 				74D6B48E2B21093B003B328C /* ViewModels */,
@@ -184,6 +187,14 @@
 				74D6B4942B22726F003B328C /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		74D6B49A2B24BBD4003B328C /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				74D6B4982B24BBCC003B328C /* Storage.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +340,7 @@
 				74D6B4572B2090DC003B328C /* NowPlayingMoviesViewController.swift in Sources */,
 				74D6B4532B2090DC003B328C /* AppDelegate.swift in Sources */,
 				74D6B4552B2090DC003B328C /* SceneDelegate.swift in Sources */,
+				74D6B4992B24BBCC003B328C /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

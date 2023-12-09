@@ -48,17 +48,19 @@ class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UIT
         if (segue.identifier == showMovieDetailsSegueIdentifier) {
             if let controller = segue.destination as? MovieDetailsViewController {
                 controller.movieId = selectedMovieId
-                controller.selectMovieAsFavouriteHandler = { [weak self] in
-                    self?.setMovieAsFavourite(movieId: self?.selectedMovieId)
+                weak var weakSelf = self
+                controller.selectMovieAsFavouriteHandler = { isFavourite in
+                    weakSelf?.setMovieAsFavourite(movieId: weakSelf?.selectedMovieId, isFavourite: isFavourite)
                 }
             }
-
         }
     }
     
     // MARK: Saving as favourite
     
-    private func setMovieAsFavourite(movieId: String?) {
+    private func setMovieAsFavourite(movieId: String?, isFavourite: Bool) {
+        
+        
         
     }
 }

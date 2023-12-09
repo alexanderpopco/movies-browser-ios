@@ -17,7 +17,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var isFavouriteButton: UIBarButtonItem!
     
     var movieId: String?
-    var selectMovieAsFavouriteHandler: (()->())?
+    var selectMovieAsFavouriteHandler: ((Bool)->())?
     
     private var viewModel: MovieDetailsViewModel?
     
@@ -53,7 +53,7 @@ class MovieDetailsViewController: UIViewController {
     
      @IBAction func didTapIsFavouriteButton(_ sender: Any) {
         if let viewModel = viewModel {
-            selectMovieAsFavouriteHandler?()
+            selectMovieAsFavouriteHandler?(!viewModel.isFavourite)
             self.viewModel?.isFavourite = !viewModel.isFavourite
             configureIsFavouriteButton()
         }
