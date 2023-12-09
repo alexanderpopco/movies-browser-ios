@@ -18,7 +18,14 @@ class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UIT
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         navigationItem.title = NSLocalizedString("Now Playing", comment: "")
+    }
+    
+    func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: MovieCell.reuseIdentifier)
     }
 
     // MARK: Table view datasource

@@ -20,6 +20,7 @@ class MovieCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         isFavouriteButton.imageView?.contentMode = .scaleAspectFit
+        isFavouriteButton.setTitle(nil, for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
