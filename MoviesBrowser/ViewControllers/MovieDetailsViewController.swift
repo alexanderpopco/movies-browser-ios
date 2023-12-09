@@ -16,40 +16,44 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var isFavouriteButton: UIBarButtonItem!
     
-    var viewModel: MovieDetailsViewModel?
+    var movieId: String?
+    var selectMovieAsFavouriteHandler: (()->())?
+    
+    private var viewModel: MovieDetailsViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func setupViewModel(viewModel: MovieDetailsViewModel) {
+    private func setupViewModel(viewModel: MovieDetailsViewModel) {
         self.viewModel = viewModel
         configureLabels()
         configurePosterImageView()
         configureIsFavouriteButton()
     }
     
-    func configureLabels() {
+    private func configureLabels() {
         titleLabel.text = viewModel?.title
         dateOfReleaseLabel.text = viewModel?.releaseDate
         ratingLabel.text = viewModel?.rating
         overviewLabel.text = viewModel?.overview
     }
     
-    func configurePosterImageView() {
+    private func configurePosterImageView() {
         if let url = viewModel?.posterUrl {
             posterImageView.load(url: url)
         }
     }
     
-    func configureIsFavouriteButton() {
+    private func configureIsFavouriteButton() {
         if let viewModel = viewModel {
             isFavouriteButton.image = viewModel.isFavourite ? UIImage.starFilledImage() : UIImage.starEmptyImage()
         }
     }
     
-    @IBAction func didTapIsFavouriteButton(_ sender: Any) {
+     @IBAction func didTapIsFavouriteButton(_ sender: Any) {
         if let viewModel = viewModel {
+            selectMovieAsFavouriteHandler?()
             self.viewModel?.isFavourite = !viewModel.isFavourite
             configureIsFavouriteButton()
         }
