@@ -40,7 +40,9 @@ class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UIT
             cell.configureWithViewModel(viewModel: viewModel.movieCellViewModelAtRow(indexPath.row))
             weak var weakSelf = self
             cell.selectMovieAsFavouriteHandler = { isFavourite in
-                weakSelf?.setMovieAsFavourite(movieId: weakSelf?.selectedMovieId, isFavourite: isFavourite)
+                DispatchQueue.main.async {
+                    weakSelf?.setMovieAsFavourite(movieId: weakSelf?.selectedMovieId, isFavourite: isFavourite)
+                }
             }
             return cell
         }
@@ -63,7 +65,9 @@ class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UIT
                 controller.movieId = selectedMovieId
                 weak var weakSelf = self
                 controller.selectMovieAsFavouriteHandler = { isFavourite in
-                    weakSelf?.setMovieAsFavourite(movieId: weakSelf?.selectedMovieId, isFavourite: isFavourite)
+                    DispatchQueue.main.async {
+                        weakSelf?.setMovieAsFavourite(movieId: weakSelf?.selectedMovieId, isFavourite: isFavourite)
+                    }
                 }
             }
         }
