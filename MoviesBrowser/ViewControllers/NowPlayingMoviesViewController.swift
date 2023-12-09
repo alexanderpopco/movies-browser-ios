@@ -59,9 +59,8 @@ class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UIT
     // MARK: Saving as favourite
     
     private func setMovieAsFavourite(movieId: String?, isFavourite: Bool) {
-        
-        
-        
+        viewModel.setMovieAsFavourite(movieId: movieId, isFavourite: isFavourite)
+        tableView.reloadData()
     }
 }
 

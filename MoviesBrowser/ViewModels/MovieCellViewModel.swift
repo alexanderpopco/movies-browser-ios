@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieCellViewModel {
+class MovieCellViewModel {
     let title: String
     let movieId: String
     var isFavourite: Bool

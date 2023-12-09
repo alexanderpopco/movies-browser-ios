@@ -9,7 +9,8 @@ import Foundation
 
 struct NowPlayingViewModel {
     
-    private let movieCellViewModels = [MovieCellViewModel]()
+    private var movieCellViewModels = [MovieCellViewModel]()
+    private let storage = Storage()
     
     func numberOfMovieCells() -> Int {
         movieCellViewModels.count
@@ -25,7 +26,13 @@ struct NowPlayingViewModel {
         return movieCellViewModels[row].movieId
     }
     
-    func setMovieAsFavourite(movieId: String?) {
-        
+    func setMovieAsFavourite(movieId: String?, isFavourite: Bool) {
+        if let movieId = movieId {
+            if isFavourite {
+                storage.saveMovieAsFavourite(movieId: movieId)
+            } else {
+                storage.removeMovieFromFavourites(movieId: movieId)            }
+        }
+        movieCellViewModels.filter({$0.movieId == movieId}).first?.isFavourite = isFavourite
     }
 }

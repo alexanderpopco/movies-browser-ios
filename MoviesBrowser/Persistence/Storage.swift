@@ -26,9 +26,7 @@ struct Storage {
     }
     
     func removeMovieFromFavourites(movieId: String) {
-        var movieIds = favourtieMoviesIds()
-        movieIds?.append(movieId)
-        userDefaults.set(movieIds, forKey: StorageKeys.favouriteMoviesIds)
-        
+        var filteredMovieIds = favourtieMoviesIds()?.filter { $0 != movieId }
+        userDefaults.set(filteredMovieIds, forKey: StorageKeys.favouriteMoviesIds)
     }
 }
