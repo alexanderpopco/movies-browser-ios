@@ -10,7 +10,7 @@ import UIKit
 private let showMovieDetailsSegueIdentifier = "showMovieDetailsSegue"
 
 class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     private var viewModel = NowPlayingViewModel()
@@ -29,7 +29,7 @@ class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.reuseIdentifier, for: indexPath)
         return cell
     
     }
