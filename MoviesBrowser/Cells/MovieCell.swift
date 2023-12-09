@@ -26,9 +26,9 @@ class MovieCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configureWithViewModel(viewModel: MovieCellViewModel) {
+    func configureWithViewModel(viewModel: MovieCellViewModel?) {
         self.viewModel = viewModel
-        movieTitleLabel.text = viewModel.title
+        movieTitleLabel.text = viewModel?.title
         configureIsFavouriteButton()
     }
     
@@ -44,7 +44,5 @@ class MovieCell: UITableViewCell {
             self.viewModel?.isFavourite = !viewModel.isFavourite
             configureIsFavouriteButton()
         }
-        
     }
-    
 }

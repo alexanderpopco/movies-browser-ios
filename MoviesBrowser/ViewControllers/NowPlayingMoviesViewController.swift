@@ -29,9 +29,15 @@ class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.reuseIdentifier, for: indexPath)
-        return cell
-    
+        if let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.reuseIdentifier, for: indexPath) as? MovieCell {
+            cell.configureWithViewModel(viewModel: viewModel.movieCellViewModelAtRow(indexPath.row))
+            weak var weakSelf = self
+            cell.selectMovieAsFavouriteHandler = { isFavourite in
+                weakSelf?.setMovieAsFavourite(movieId: weakSelf?.selectedMovieId, isFavourite: isFavourite)
+            }
+            return cell
+        }
+        return UITableViewCell()
     }
     
     // MARK: Table view delegate
