@@ -19,42 +19,56 @@ class MovieDetailsViewController: UIViewController {
     var movieId: Int?
     var selectMovieAsFavouriteHandler: ((Bool)->())?
     
-    private var viewModel: MovieDetailsViewModel?
+    private var viewModel = MovieDetailsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadMovieDetailsInfo()
     }
     
-    private func setupViewModel(viewModel: MovieDetailsViewModel) {
-        self.viewModel = viewModel
+    func loadMovieDetailsInfo() {
+        weak var weakSelf = self
+        guard movieId != nil else { return }
+        viewModel.loadMovieDetailsInfo(movieId: movieId!, completion: { error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    weakSelf?.showAlertWithTitle(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription)
+                } else {
+                    weakSelf?.configureUI()
+                }
+            }
+        })
+    }
+    
+    private func configureUI() {
         configureLabels()
         configurePosterImageView()
         configureIsFavouriteButton()
     }
     
     private func configureLabels() {
-        titleLabel.text = viewModel?.title
-        dateOfReleaseLabel.text = viewModel?.releaseDate
-        ratingLabel.text = viewModel?.rating
-        overviewLabel.text = viewModel?.overview
+        titleLabel.text = viewModel.infoViewModel?.title
+        dateOfReleaseLabel.text = viewModel.infoViewModel?.releaseDate
+        ratingLabel.text = viewModel.infoViewModel?.rating
+        overviewLabel.text = viewModel.infoViewModel?.overview
     }
     
     private func configurePosterImageView() {
-        if let url = viewModel?.posterUrl {
+        if let url = viewModel.infoViewModel?.posterUrl {
             posterImageView.load(url: url)
         }
     }
     
     private func configureIsFavouriteButton() {
-        if let viewModel = viewModel {
-            isFavouriteButton.image = viewModel.isFavourite ? UIImage.starFilledImage() : UIImage.starEmptyImage()
+        if let infoViewModel = viewModel.infoViewModel {
+            isFavouriteButton.image = infoViewModel.isFavourite ? UIImage.starFilledImage() : UIImage.starEmptyImage()
         }
     }
     
      @IBAction func didTapIsFavouriteButton(_ sender: Any) {
-        if let viewModel = viewModel {
-            selectMovieAsFavouriteHandler?(!viewModel.isFavourite)
-            self.viewModel?.isFavourite = !viewModel.isFavourite
+         if let infoViewModel = viewModel.infoViewModel {
+            selectMovieAsFavouriteHandler?(!infoViewModel.isFavourite)
+             infoViewModel.isFavourite = !infoViewModel.isFavourite
             configureIsFavouriteButton()
         }
     }

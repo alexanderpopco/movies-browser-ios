@@ -10,7 +10,7 @@ import Foundation
 class NowPlayingViewModel {
     
     private var movieCellViewModels = [MovieCellViewModel]()
-    private let storage = Storage()
+    private let storage = Storage.shared
     private let networkManager = NetworkManager.shared
     
     func numberOfMovieCells() -> Int {
@@ -41,9 +41,9 @@ class NowPlayingViewModel {
         weak var weakSelf = self
         networkManager.fetchNowPlayingMovies(page: page) { movieResponse, error in
             if let movies: [Movie] = movieResponse?.results {
-                let favouriteMoviesIds = weakSelf?.storage.favourtieMoviesIds() ?? [Int]()
+                let favouriteMoviesIds = weakSelf?.storage.favourtieMoviesIds()
                 let newMovieCellViewModels: [MovieCellViewModel] = movies.map { movie in
-                    let isFavourite = favouriteMoviesIds.contains(movie.movieId)
+                    let isFavourite = favouriteMoviesIds?.contains(movie.movieId) ?? false
                     return MovieCellViewModel(movie: movie, isFavourite: isFavourite)
                 } as! [MovieCellViewModel]
                 weakSelf?.movieCellViewModels.append(contentsOf: newMovieCellViewModels)

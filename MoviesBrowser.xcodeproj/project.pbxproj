@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74C19CC62B27AA6D00A65680 /* MovieDetailsInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C19CC52B27AA6D00A65680 /* MovieDetailsInfoViewModel.swift */; };
 		74CA289E2B26524E00997D91 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CA289D2B26524E00997D91 /* NetworkManager.swift */; };
 		74CA28A12B26668B00997D91 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CA28A02B26668B00997D91 /* Endpoint.swift */; };
 		74CA28A32B272F4800997D91 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CA28A22B272F4800997D91 /* UIViewController+Extensions.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		74C19CC52B27AA6D00A65680 /* MovieDetailsInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsInfoViewModel.swift; sourceTree = "<group>"; };
 		74CA289D2B26524E00997D91 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		74CA28A02B26668B00997D91 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		74CA28A22B272F4800997D91 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		74D6B48E2B21093B003B328C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				74C19CC52B27AA6D00A65680 /* MovieDetailsInfoViewModel.swift */,
 				74D6B4872B2108F4003B328C /* MovieDetailsViewModel.swift */,
 				74D6B4852B2108CF003B328C /* MovieCellViewModel.swift */,
 				74D6B4962B23C5C4003B328C /* NowPlayingViewModel.swift */,
@@ -374,6 +377,7 @@
 				74CA28A12B26668B00997D91 /* Endpoint.swift in Sources */,
 				74D6B4572B2090DC003B328C /* NowPlayingMoviesViewController.swift in Sources */,
 				74D6B4532B2090DC003B328C /* AppDelegate.swift in Sources */,
+				74C19CC62B27AA6D00A65680 /* MovieDetailsInfoViewModel.swift in Sources */,
 				74CA289E2B26524E00997D91 /* NetworkManager.swift in Sources */,
 				74D6B4552B2090DC003B328C /* SceneDelegate.swift in Sources */,
 				74D6B4992B24BBCC003B328C /* Storage.swift in Sources */,

@@ -11,7 +11,9 @@ private struct StorageKeys {
     static let favouriteMoviesIds = "favouriteMoviesIds"
 }
 
-struct Storage {
+class Storage {
+    
+    static let shared = Storage()
     
     private let userDefaults = UserDefaults()
     
