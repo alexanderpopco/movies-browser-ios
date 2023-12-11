@@ -14,12 +14,26 @@ class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var tableView: UITableView!
     
     private var viewModel = NowPlayingViewModel()
-    private var selectedMovieId: String?
+    private var selectedMovieId: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         navigationItem.title = NSLocalizedString("Now Playing", comment: "")
+        loadMoviesForPage(page: 1)
+    }
+    
+    func loadMoviesForPage(page: Int) {
+        weak var weakSelf = self
+        viewModel.loadMoviesForPage(page: page) { error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    weakSelf?.showAlertWithTitle(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription)
+                } else {
+                    weakSelf?.tableView.reloadData()
+                }
+            }
+        }
     }
     
     func setupTableView() {
@@ -76,7 +90,7 @@ class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UIT
     
     // MARK: Saving as favourite
     
-    private func setMovieAsFavourite(movieId: String?, isFavourite: Bool) {
+    private func setMovieAsFavourite(movieId: Int?, isFavourite: Bool) {
         viewModel.setMovieAsFavourite(movieId: movieId, isFavourite: isFavourite)
         tableView.reloadData()
     }

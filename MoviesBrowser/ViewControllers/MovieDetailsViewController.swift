@@ -16,7 +16,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var isFavouriteButton: UIBarButtonItem!
     
-    var movieId: String?
+    var movieId: Int?
     var selectMovieAsFavouriteHandler: ((Bool)->())?
     
     private var viewModel: MovieDetailsViewModel?

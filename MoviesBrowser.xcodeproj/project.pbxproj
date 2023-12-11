@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74CA289E2B26524E00997D91 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CA289D2B26524E00997D91 /* NetworkManager.swift */; };
+		74CA28A12B26668B00997D91 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CA28A02B26668B00997D91 /* Endpoint.swift */; };
+		74CA28A32B272F4800997D91 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CA28A22B272F4800997D91 /* UIViewController+Extensions.swift */; };
 		74D6B4532B2090DC003B328C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D6B4522B2090DC003B328C /* AppDelegate.swift */; };
 		74D6B4552B2090DC003B328C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D6B4542B2090DC003B328C /* SceneDelegate.swift */; };
 		74D6B4572B2090DC003B328C /* NowPlayingMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D6B4562B2090DC003B328C /* NowPlayingMoviesViewController.swift */; };
@@ -48,6 +51,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		74CA289D2B26524E00997D91 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		74CA28A02B26668B00997D91 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		74CA28A22B272F4800997D91 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		74D6B44F2B2090DC003B328C /* MoviesBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D6B4522B2090DC003B328C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74D6B4542B2090DC003B328C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74CA289F2B26525500997D91 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				74CA289D2B26524E00997D91 /* NetworkManager.swift */,
+				74CA28A02B26668B00997D91 /* Endpoint.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		74D6B4462B2090DC003B328C = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +140,7 @@
 			children = (
 				74D6B4522B2090DC003B328C /* AppDelegate.swift */,
 				74D6B4542B2090DC003B328C /* SceneDelegate.swift */,
+				74CA289F2B26525500997D91 /* Networking */,
 				74D6B49A2B24BBD4003B328C /* Persistence */,
 				74D6B4912B22122B003B328C /* Extensions */,
 				74D6B48D2B21091D003B328C /* Models */,
@@ -190,6 +206,7 @@
 				74D6B48F2B221223003B328C /* UIImageView+Extensions.swift */,
 				74D6B4922B221582003B328C /* Date+Extensions.swift */,
 				74D6B4942B22726F003B328C /* UIImage+Extensions.swift */,
+				74CA28A22B272F4800997D91 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -347,14 +364,17 @@
 				74D6B48A2B210906003B328C /* Movie.swift in Sources */,
 				74D6B4832B210624003B328C /* MovieDetailsViewController.swift in Sources */,
 				74D6B4862B2108CF003B328C /* MovieCellViewModel.swift in Sources */,
+				74CA28A32B272F4800997D91 /* UIViewController+Extensions.swift in Sources */,
 				74D6B4932B221582003B328C /* Date+Extensions.swift in Sources */,
 				74D6B4952B22726F003B328C /* UIImage+Extensions.swift in Sources */,
 				74D6B4902B221223003B328C /* UIImageView+Extensions.swift in Sources */,
 				74D6B48C2B210914003B328C /* MovieDetails.swift in Sources */,
 				74D6B4882B2108F4003B328C /* MovieDetailsViewModel.swift in Sources */,
 				74D6B4972B23C5C4003B328C /* NowPlayingViewModel.swift in Sources */,
+				74CA28A12B26668B00997D91 /* Endpoint.swift in Sources */,
 				74D6B4572B2090DC003B328C /* NowPlayingMoviesViewController.swift in Sources */,
 				74D6B4532B2090DC003B328C /* AppDelegate.swift in Sources */,
+				74CA289E2B26524E00997D91 /* NetworkManager.swift in Sources */,
 				74D6B4552B2090DC003B328C /* SceneDelegate.swift in Sources */,
 				74D6B4992B24BBCC003B328C /* Storage.swift in Sources */,
 			);

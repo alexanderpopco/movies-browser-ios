@@ -9,7 +9,7 @@ import Foundation
 
 class MovieCellViewModel {
     let title: String
-    let movieId: String
+    let movieId: Int
     var isFavourite: Bool
     
     init(movie: Movie, isFavourite: Bool) {

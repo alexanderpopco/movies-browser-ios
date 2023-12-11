@@ -15,17 +15,17 @@ struct Storage {
     
     private let userDefaults = UserDefaults()
     
-    func favourtieMoviesIds() -> [String]? {
-        return userDefaults.array(forKey: StorageKeys.favouriteMoviesIds) as? [String]
+    func favourtieMoviesIds() -> [Int]? {
+        return userDefaults.array(forKey: StorageKeys.favouriteMoviesIds) as? [Int]
     }
     
-    func saveMovieAsFavourite(movieId: String) {
+    func saveMovieAsFavourite(movieId: Int) {
         var movieIds = favourtieMoviesIds()
         movieIds?.append(movieId)
         userDefaults.set(movieIds, forKey: StorageKeys.favouriteMoviesIds)
     }
     
-    func removeMovieFromFavourites(movieId: String) {
+    func removeMovieFromFavourites(movieId: Int) {
         let filteredMovieIds = favourtieMoviesIds()?.filter { $0 != movieId }
         userDefaults.set(filteredMovieIds, forKey: StorageKeys.favouriteMoviesIds)
     }

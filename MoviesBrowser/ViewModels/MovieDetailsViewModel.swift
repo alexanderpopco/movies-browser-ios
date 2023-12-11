@@ -9,7 +9,7 @@ import Foundation
 
 struct MovieDetailsViewModel {
     let title: String
-    let movieId: String
+    let movieId: Int
     let posterUrl: URL?
     let releaseDate: String
     let rating: String

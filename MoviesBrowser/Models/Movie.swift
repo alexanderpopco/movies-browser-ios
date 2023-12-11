@@ -7,7 +7,16 @@
 
 import Foundation
 
+struct MovieResponse: Codable {
+    let results: [Movie]
+}
+
 struct Movie: Codable {
     let title: String
-    let movieId: String
+    let movieId: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case title
+        case movieId = "id"
+    }
 }
