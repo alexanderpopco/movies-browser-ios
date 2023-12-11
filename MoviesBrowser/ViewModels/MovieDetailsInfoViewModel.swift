@@ -27,6 +27,6 @@ class MovieDetailsInfoViewModel {
     }
     
     static func posterUrlFromPath(posterPath: String) -> URL? {
-            return URL(string: ("https://image.tmdb.org/t/p/w200/" + posterPath))
+            return URL(string: ("https://image.tmdb.org/t/p/w300/" + posterPath))
     }
 }
