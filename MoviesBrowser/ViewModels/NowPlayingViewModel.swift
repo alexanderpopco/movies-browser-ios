@@ -13,6 +13,8 @@ class NowPlayingViewModel {
     private let storage = Storage.shared
     private let networkManager = NetworkManager.shared
     
+    var currentPage = 0
+    
     func numberOfMovieCells() -> Int {
         movieCellViewModels.count
     }
@@ -37,9 +39,9 @@ class NowPlayingViewModel {
         movieCellViewModels.filter({$0.movieId == movieId}).first?.isFavourite = isFavourite
     }
     
-    func loadMoviesForPage(page: Int, completion: ((Error?) -> Void)?) {
+    func loadMovies(completion: ((Error?) -> Void)?) {
         weak var weakSelf = self
-        networkManager.fetchNowPlayingMovies(page: page) { movieResponse, error in
+        networkManager.fetchNowPlayingMovies(page: currentPage + 1) { movieResponse, error in
             if let movies: [Movie] = movieResponse?.results {
                 let favouriteMoviesIds = weakSelf?.storage.favourtieMoviesIds()
                 let newMovieCellViewModels: [MovieCellViewModel] = movies.map { movie in
@@ -47,6 +49,7 @@ class NowPlayingViewModel {
                     return MovieCellViewModel(movie: movie, isFavourite: isFavourite)
                 } as! [MovieCellViewModel]
                 weakSelf?.movieCellViewModels.append(contentsOf: newMovieCellViewModels)
+                weakSelf?.currentPage += 1
                 completion?(error)
             }
         }

@@ -15,23 +15,26 @@ class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UIT
     
     private var viewModel = NowPlayingViewModel()
     private var selectedMovieId: Int?
+    var isLoadingList = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         navigationItem.title = NSLocalizedString("Now Playing", comment: "")
-        loadMoviesForPage(page: 1)
+        loadMovies()
     }
     
-    func loadMoviesForPage(page: Int) {
+    func loadMovies() {
         weak var weakSelf = self
-        viewModel.loadMoviesForPage(page: page) { error in
+        isLoadingList = true
+        viewModel.loadMovies { error in
             DispatchQueue.main.async {
                 if let error = error {
                     weakSelf?.showAlertWithTitle(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription)
                 } else {
                     weakSelf?.tableView.reloadData()
                 }
+                weakSelf?.isLoadingList = false
             }
         }
     }
@@ -70,6 +73,13 @@ class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UIT
         selectedMovieId = viewModel.movieIdAtRow(indexPath.row)
         guard selectedMovieId != nil else { return }
         performSegue(withIdentifier: "showMovieDetailsSegue", sender: nil)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height ) && !isLoadingList) {
+            self.isLoadingList = true
+            self.loadMovies()
+        }
     }
     
     // MARK: Navigation
