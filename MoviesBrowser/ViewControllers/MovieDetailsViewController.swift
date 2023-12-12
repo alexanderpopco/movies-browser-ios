@@ -26,7 +26,7 @@ class MovieDetailsViewController: UIViewController {
         loadMovieDetailsInfo()
     }
     
-    func loadMovieDetailsInfo() {
+    private func loadMovieDetailsInfo() {
         weak var weakSelf = self
         guard movieId != nil else { return }
         viewModel.loadMovieDetailsInfo(movieId: movieId!, completion: { error in

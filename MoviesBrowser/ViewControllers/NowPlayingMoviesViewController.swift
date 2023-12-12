@@ -16,7 +16,7 @@ class NowPlayingMoviesViewController: UIViewController {
     
     private var viewModel = NowPlayingMoviesViewModel()
     private var selectedMovieId: Int?
-    var isLoadingNowPlayingMovies = false
+    private var isLoadingNowPlayingMovies = false
     
     // MARK: View controller lifecycle
 
@@ -30,13 +30,13 @@ class NowPlayingMoviesViewController: UIViewController {
     
     // MARK: Setup UI
     
-    func setupTableView() {
+    private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: MovieCell.reuseIdentifier)
     }
     
-    func setupSearchTextField() {
+    private func setupSearchTextField() {
         searchTextField.delegate = self
         searchTextField.placeholder = NSLocalizedString("Search", comment: "")
         searchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -44,7 +44,7 @@ class NowPlayingMoviesViewController: UIViewController {
     
     // MARK: Load data
     
-    func loadNowPlayingMovies() {
+    private func loadNowPlayingMovies() {
         weak var weakSelf = self
         isLoadingNowPlayingMovies = true
         viewModel.loadNowPlayingMovies { error in
@@ -59,7 +59,7 @@ class NowPlayingMoviesViewController: UIViewController {
         }
     }
     
-    func loadSearchedMovies() {
+    private func loadSearchedMovies() {
         weak var weakSelf = self
         viewModel.loadSearchedMovies { error in
             DispatchQueue.main.async {

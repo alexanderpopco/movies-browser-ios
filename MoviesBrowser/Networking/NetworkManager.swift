@@ -16,7 +16,7 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     
-    public func fetchMovieDetails(movieId: Int, completion: ((MovieDetails?, Error?) -> Void)?) {
+    func fetchMovieDetails(movieId: Int, completion: ((MovieDetails?, Error?) -> Void)?) {
         guard let request = createRequest(for: Endpoint.movieDetails(movieId: movieId)) else {
             completion?(nil, NetworkError.invalidUrl)
             return
@@ -24,7 +24,7 @@ class NetworkManager {
         executeRequest(request: request, completion: completion)
     }
 
-    public func fetchNowPlayingMovies(page: Int, completion: ((MovieResponse?, Error?) -> Void)?) {
+    func fetchNowPlayingMovies(page: Int, completion: ((MovieResponse?, Error?) -> Void)?) {
         guard let request = createRequest(for: Endpoint.nowPlayingMovies(page: page)) else {
             completion?(nil, NetworkError.invalidUrl)
             return
@@ -32,7 +32,7 @@ class NetworkManager {
         executeRequest(request: request, completion: completion)
     }
     
-    public func fetchSearchedMovies(searchString: String, completion: ((MovieResponse?, Error?) -> Void)?) {
+    func fetchSearchedMovies(searchString: String, completion: ((MovieResponse?, Error?) -> Void)?) {
         guard let request = createRequest(for: Endpoint.searchedMovies(searchString: searchString)) else {
             completion?(nil, NetworkError.invalidUrl)
             return
