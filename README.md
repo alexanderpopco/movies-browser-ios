@@ -1,29 +1,24 @@
-# README #
+# Movies Browser #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+A Swift-based iOS application that leverages The Movie DB API to showcase currently playing movies in theaters, allowing users to explore details, mark favorite movies, and enjoy a movie discovery experience.
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### Prerequisites ###
+* Xcode 14.2 or higher
+* iOS 13 or higher
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* Clone the repository
+* Open the project in Xcode
+* **Change value for property `apiKey` in `Endpoint.swift` to your TMBDB API key**
 
-### Contribution guidelines ###
+### Features ###
 
-* Writing tests
-* Code review
-* Other guidelines
+* Now Playing Movies
+* Movie Details
+* Search with Autocomplete
+* Saving favourite movies locally on device
 
-### Who do I talk to? ###
+### External Libraries ###
 
-* Repo owner or admin
-* Other community or team contact
+The project uses no external 3rd party dependancies.
