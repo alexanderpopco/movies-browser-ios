@@ -26,7 +26,7 @@ class MovieDetailsInfoViewModel {
         self.isFavourite = isFavourite
     }
     
-    private static func posterUrlFromPath(posterPath: String) -> URL? {
-            return URL(string: ("https://image.tmdb.org/t/p/w300/" + posterPath))
+    static func posterUrlFromPath(posterPath: String) -> URL? {
+            return URL(string: ("https://image.tmdb.org/t/p/w300" + posterPath))
     }
 }
