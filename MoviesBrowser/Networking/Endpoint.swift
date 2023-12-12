@@ -52,4 +52,15 @@ extension Endpoint {
             ]
         )
     }
+    
+    static func searchedMovies(searchString: String) -> Endpoint {
+        return Endpoint(
+            path: "/3/search/movie",
+            queryItems: [
+                Queries.apiQuery,
+                Queries.languageQuery,
+                URLQueryItem(name: "query", value: searchString)
+            ]
+        )
+    }
 }

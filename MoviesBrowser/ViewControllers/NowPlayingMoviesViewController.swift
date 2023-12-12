@@ -9,43 +9,94 @@ import UIKit
 
 private let showMovieDetailsSegueIdentifier = "showMovieDetailsSegue"
 
-class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NowPlayingMoviesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchTextField: UITextField!
     
-    private var viewModel = NowPlayingViewModel()
+    private var viewModel = NowPlayingMoviesViewModel()
     private var selectedMovieId: Int?
-    var isLoadingList = false
+    var isLoadingNowPlayingMovies = false
+    
+    // MARK: View controller lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupSearchTextField()
         navigationItem.title = NSLocalizedString("Now Playing", comment: "")
-        loadMovies()
+        loadNowPlayingMovies()
     }
     
-    func loadMovies() {
-        weak var weakSelf = self
-        isLoadingList = true
-        viewModel.loadMovies { error in
-            DispatchQueue.main.async {
-                if let error = error {
-                    weakSelf?.showAlertWithTitle(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription)
-                } else {
-                    weakSelf?.tableView.reloadData()
-                }
-                weakSelf?.isLoadingList = false
-            }
-        }
-    }
+    // MARK: Setup UI
     
     func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: MovieCell.reuseIdentifier)
     }
+    
+    func setupSearchTextField() {
+        searchTextField.delegate = self
+        searchTextField.placeholder = NSLocalizedString("Search", comment: "")
+        searchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    // MARK: Load data
+    
+    func loadNowPlayingMovies() {
+        weak var weakSelf = self
+        isLoadingNowPlayingMovies = true
+        viewModel.loadNowPlayingMovies { error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    weakSelf?.showAlertWithTitle(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription)
+                } else {
+                    weakSelf?.tableView.reloadData()
+                }
+                weakSelf?.isLoadingNowPlayingMovies = false
+            }
+        }
+    }
+    
+    func loadSearchedMovies() {
+        weak var weakSelf = self
+        viewModel.loadSearchedMovies { error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    weakSelf?.showAlertWithTitle(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription)
+                } else {
+                    weakSelf?.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == showMovieDetailsSegueIdentifier) {
+            if let controller = segue.destination as? MovieDetailsViewController {
+                controller.movieId = selectedMovieId
+                weak var weakSelf = self
+                controller.selectMovieAsFavouriteHandler = { isFavourite in
+                    DispatchQueue.main.async {
+                        weakSelf?.setMovieAsFavourite(movieId: weakSelf?.selectedMovieId, isFavourite: isFavourite)
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: User actions
+    
+    private func setMovieAsFavourite(movieId: Int?, isFavourite: Bool) {
+        viewModel.setMovieAsFavourite(movieId: movieId, isFavourite: isFavourite)
+        tableView.reloadData()
+    }
+}
 
-    // MARK: Table view datasource
+extension NowPlayingMoviesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfMovieCells()
@@ -67,7 +118,9 @@ class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UIT
         return UITableViewCell()
     }
     
-    // MARK: Table view delegate
+}
+
+extension NowPlayingMoviesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedMovieId = viewModel.movieIdAtRow(indexPath.row)
@@ -76,33 +129,23 @@ class NowPlayingMoviesViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height ) && !isLoadingList) {
-            self.isLoadingList = true
-            self.loadMovies()
+        guard viewModel.shouldLoadNowPlayingMovies() else { return }
+        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height ) && !isLoadingNowPlayingMovies) {            self.isLoadingNowPlayingMovies = true
+            self.loadNowPlayingMovies()
         }
     }
     
-    // MARK: Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == showMovieDetailsSegueIdentifier) {
-            if let controller = segue.destination as? MovieDetailsViewController {
-                controller.movieId = selectedMovieId
-                weak var weakSelf = self
-                controller.selectMovieAsFavouriteHandler = { isFavourite in
-                    DispatchQueue.main.async {
-                        weakSelf?.setMovieAsFavourite(movieId: weakSelf?.selectedMovieId, isFavourite: isFavourite)
-                    }
-                }
-            }
-        }
-    }
-    
-    // MARK: Saving as favourite
-    
-    private func setMovieAsFavourite(movieId: Int?, isFavourite: Bool) {
-        viewModel.setMovieAsFavourite(movieId: movieId, isFavourite: isFavourite)
-        tableView.reloadData()
-    }
 }
 
+extension NowPlayingMoviesViewController: UITextFieldDelegate {
+            
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    @objc func textFieldDidChange() {
+        viewModel.updateSearchString(string: searchTextField.text ?? "")
+        self.loadSearchedMovies()
+    }
+}

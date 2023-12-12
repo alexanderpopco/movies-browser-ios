@@ -32,6 +32,14 @@ class NetworkManager {
         executeRequest(request: request, completion: completion)
     }
     
+    public func fetchSearchedMovies(searchString: String, completion: ((MovieResponse?, Error?) -> Void)?) {
+        guard let request = createRequest(for: Endpoint.searchedMovies(searchString: searchString)) else {
+            completion?(nil, NetworkError.invalidUrl)
+            return
+        }
+        executeRequest(request: request, completion: completion)
+    }
+    
     private func createRequest(for endpoint: Endpoint) -> URLRequest? {
         if let url = endpoint.url {
             var request = URLRequest(url: url)

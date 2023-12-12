@@ -18,21 +18,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fwM-pf-MLS">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="153" width="393" height="665"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S4d-YV-enA">
+                                <rect key="frame" x="16" y="111" width="361" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fwM-pf-MLS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6YH-Cx-yWM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S4d-YV-enA" secondAttribute="trailing" constant="16" id="1kr-E3-iA3"/>
                             <constraint firstItem="fwM-pf-MLS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9fv-h1-7IM"/>
+                            <constraint firstItem="S4d-YV-enA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="BNT-Na-uGb"/>
+                            <constraint firstItem="fwM-pf-MLS" firstAttribute="top" secondItem="S4d-YV-enA" secondAttribute="bottom" constant="8" id="BtH-Od-cw2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fwM-pf-MLS" secondAttribute="bottom" id="QD1-9t-Ynw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fwM-pf-MLS" secondAttribute="trailing" id="k6s-AF-9FX"/>
+                            <constraint firstItem="S4d-YV-enA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="zOs-dz-Rjm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8Yo-Zy-udD"/>
                     <connections>
+                        <outlet property="searchTextField" destination="S4d-YV-enA" id="cBw-Q2-mJh"/>
                         <outlet property="tableView" destination="fwM-pf-MLS" id="UVk-Ta-NAq"/>
                         <segue destination="PV5-8Z-eHO" kind="show" identifier="showMovieDetailsSegue" id="TeI-zh-9x2"/>
                     </connections>
