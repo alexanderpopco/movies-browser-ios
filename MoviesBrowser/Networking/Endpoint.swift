@@ -7,6 +7,10 @@
 
 import Foundation
 
+// API Key to TMDB API
+// Change value to your api key
+// https://developer.themoviedb.org/docs/getting-started
+
 private let apiKey = "YOUR_API_KEY"
 
 private struct Queries {
