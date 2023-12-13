@@ -21,8 +21,8 @@ class NowPlayingMoviesViewModel {
         searchString = string
     }
 
-    private func shouldPresentSearchData() -> Bool {
-        return searchString.count > 0
+    func shouldPresentSearchData() -> Bool {
+        return !searchString.isEmpty
     }
     
     func numberOfMovieCells() -> Int {
@@ -57,10 +57,6 @@ class NowPlayingMoviesViewModel {
                 storage.removeMovieFromFavourites(movieId: movieId)            }
         }
         nowPlayingMovieCellViewModels.filter({$0.movieId == movieId}).first?.isFavourite = isFavourite
-    }
-    
-    func shouldLoadNowPlayingMovies() -> Bool {
-        return searchString.isEmpty
     }
     
     func loadNowPlayingMovies(completion: ((Error?) -> Void)?) {

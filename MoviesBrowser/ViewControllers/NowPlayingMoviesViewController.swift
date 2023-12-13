@@ -129,7 +129,7 @@ extension NowPlayingMoviesViewController: UITableViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard viewModel.shouldLoadNowPlayingMovies() else { return }
+        guard !viewModel.shouldPresentSearchData() else { return }
         if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height ) && !isLoadingNowPlayingMovies) {            self.isLoadingNowPlayingMovies = true
             self.loadNowPlayingMovies()
         }
